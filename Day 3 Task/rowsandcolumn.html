@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 5 3-Column Layout</title>
+    
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+
+    <!-- Grid Container -->
+    <div class="container my-5">
+        <h2 class="text-center mb-5">Responsive 3-Column Layout</h2>
+        
+        <!-- Grid Row -->
+        <div class="row g-4">
+            
+            <!-- Column 1 -->
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm">
+                    <h3 class="h5 card-title text-primary">Column One</h3>
+                    <p class="card-text text-muted">This is the first column. It spans 4 out of 12 available grid tracks on medium devices and up.</p>
+                    <button type="button" class="btn btn-primary mt-auto">Action One</button>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm">
+                    <h3 class="h5 card-title text-success">Column Two</h3>
+                    <p class="card-text text-muted">This is the second column. Bootstrap automatically handles the spacing and alignment between columns.</p>
+                    <button type="button" class="btn btn-success mt-auto">Action Two</button>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm">
+                    <h3 class="h5 card-title text-danger">Column Three</h3>
+                    <p class="card-text text-muted">This is the third column. Once the screen drops below 768px wide, these elements collapse into a clean single-column stack.</p>
+                    <button type="button" class="btn btn-danger mt-auto">Action Three</button>
+                </div>
+            </div>
+
+        </div> <!-- /row -->
+    </div> <!-- /container -->
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

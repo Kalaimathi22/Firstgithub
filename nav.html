@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+  <a href="#">Home</a>
+
+  <div class="dropdown">
+    <a href="#">Services</a>
+
+    <div class="submenu">
+      <a href="#">Web Design</a>
+      <a href="#">App Design</a>
+    
+    </div>
+  </div>
+  <a href="#">Contact</a>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    gap: 20px;
+    background: #360552;
+    padding: 15px;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #333;
+    padding: 10px;
+  }
+
+  .submenu a {
+    display: block;
+    padding: 5px;
+  }
+
+  .dropdown:hover .submenu {
+    display: block;
+  }
+</style>
+</body>
+</html>

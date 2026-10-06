@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing-card</title>
+</head>
+<body>
+   <div class="pricing">
+  <div class="card">
+    <h2>Basic</h2>
+    <p>$5 / month</p>
+    <p>For personal use</p>
+    <button>Choose Basic</button>
+  </div>
+
+  <div class="card featured">
+    <h2>Pro</h2>
+    <p>$10 / month</p>
+    <p>More features</p>
+    <button>Choose Pro</button>
+  </div>
+
+  <div class="card">
+    <h2>Team</h2>
+    <p>$20 / month</p>
+    <p>For small teams</p>
+    <button>Choose Team</button>
+  </div>
+</div>
+
+<style>
+  .pricing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background: white;
+  }
+
+  .featured {
+    border: 2px solid royalblue;
+    box-shadow: 0 4px 12px #0002;
+  }
+
+  button {
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 5px;
+    background: royalblue;
+    color: white;
+    cursor: pointer;
+  }
+  .card:hover {
+    background-color: #e0ecff;
+    box-shadow: 0 6px 16px rgb(0 0 0 / 15%);
+  }
+
+  @media (max-width: 600px) {
+    .pricing {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 
+</body>
+</html>

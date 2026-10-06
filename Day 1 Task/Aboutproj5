@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About - My Website</title>
+</head>
+<body>
+
+  <!-- Header + Nav -->
+  <header>
+    <h1>My Website</h1>
+    <nav>
+      <ul>
+        <li><a href="Homeproj5.html">Home</a></li>
+        <li><a href="Aboutproj5.html">About</a></li>
+        <li><a href="Contactproj5.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <main>
+    <section>
+      <h2>About Us</h2>
+      <article>
+        <h3>Our Mission</h3>
+        <p>We aim to provide useful resources and engaging content for learners and developers.</p>
+      </article>
+      <article>
+        <h3>Our Story</h3>
+        <p>Founded in 2026, we started as a small project and grew into a community-driven platform.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 My Website | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

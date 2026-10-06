@@ -1,0 +1,18 @@
+/* Style for the main heading (h1) */
+h1 {
+    color: red;             /* Dark blue text color */
+    font-family: 'Arial', sans-serif; /* Clean, modern font choice */
+    font-size: 36px;            /* Large font size */
+    text-align: center;         /* Centers the text on the page */
+    margin-top: 40px;           /* Spacing above the heading */
+    margin-bottom: 20px;        /* Spacing below the heading */
+}
+
+/* Style for the secondary heading (h2) */
+h2 {
+    color: rgb(73, 19, 221);             /* Teal text color */
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    border-bottom: 2px solid black; /* Adds a clean underline effect */
+    padding-bottom: 8px;
+}

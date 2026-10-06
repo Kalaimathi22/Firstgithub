@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+// Initial balance
+let balance = 1000;  // starting amount
+
+// Simulated menu choices (like user inputs)
+const menuChoices = ["Check Balance", "Deposit", "Withdraw", "Withdraw", "Exit"];
+const depositAmount = 500;
+const withdrawAmounts = [300, 1500]; // first valid, second invalid
+
+// Loop through menu choices
+for (let i = 0; i < menuChoices.length; i++) {
+    let choice = menuChoices[i];
+
+    switch (choice) {
+        case "Check Balance":
+            console.log(`Your current balance is: ₹${balance}`);
+            break;
+
+        case "Deposit":
+            balance += depositAmount;
+            console.log(`You deposited ₹${depositAmount}. New balance: ₹${balance}`);
+            break;
+
+        case "Withdraw":
+            let amount = withdrawAmounts.shift(); // take next withdrawal amount
+            if (amount > balance) {
+                console.log(`Withdrawal of ₹${amount} denied. Insufficient balance!`);
+            } else {
+                balance -= amount;
+                console.log(`You withdrew ₹${amount}. New balance: ₹${balance}`);
+            }
+            break;
+
+        case "Exit":
+            console.log("Thank you for using our ATM. Goodbye!");
+            break;
+
+        default:
+            console.log("Invalid option. Please try again.");
+    }
+
+    // Stop loop if Exit is chosen
+    if (choice === "Exit") {
+        break;
+    }
+}
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* Change the font and background of the whole page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Style the Header (Top bar) */
+header {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the Navigation Menu */
+nav {
+    background-color: #444444;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Style the links inside the navigation menu */
+nav a {
+    color: white;
+    text-decoration: none; /* Removes the underline */
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/* Change the link color when you hover over it */
+nav a:hover {
+    background-color: #555555;
+    border-radius: 4px;
+}
+
+/* Style the Main Content Area */
+main {
+    background-color: white;
+    max-width: 800px;    /* Prevents the text from stretching too wide */
+    margin: 30px auto;   /* Centers the content container on the screen */
+    padding: 30px;
+    border-radius: 8px;  /* Rounds the corners slightly */
+}
+
+/* Style the Footer (Bottom bar) */
+footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;     /* Sticks the footer to the bottom of the screen */
+    bottom: 0;
+    width: 100%;
+}

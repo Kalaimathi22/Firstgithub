@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jishnu's Cafe</title>
+</head>
+<body>
+    <section class="testimonials">
+  <h2>What our customers say</h2>
+
+  <div class="cards">
+    <div class="card">
+      <img src="tig.jpg" alt="Vino">
+      <h3>Vino</h3>
+      <p>“The coffee was delicious!”</p>
+    </div>
+
+    <div class="card">
+      <img src="squ.jpg" alt="Kavi">
+      <h3>Kavi</h3>
+      <p>“A cozy place with friendly staff.”</p>
+    </div>
+
+    <div class="card">
+      <img src="tom.jpg" alt="Bhavya">
+      <h3>Bhavya</h3>
+      <p>“The cake was wonderful.”</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    background: #fff8ef;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .cards {
+    display: flex;
+    gap: 20px;
+  }
+
+  .card {
+    flex: 1;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+
+  .card img {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 600px) {
+    .cards {
+      flex-direction: column;
+    }
+  }
+</style>
+</body>
+</html>

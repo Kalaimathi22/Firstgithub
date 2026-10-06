@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College/Tech Event Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #333;
+      border-radius: 8px;
+    }
+    fieldset {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #666;
+    }
+    legend {
+      font-weight: bold;
+      padding: 0 10px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    .radio-group, .checkbox-group {
+      margin-top: 10px;
+    }
+    .radio-group label, .checkbox-group label {
+      display: inline-block;
+      margin-right: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Event Registration Form</h1>
+
+  <form action="#" method="post">
+    <!-- Personal Information -->
+    <fieldset>
+      <legend>Personal Information</legend>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="college">College Name:</label>
+      <input type="text" id="college" name="college" required>
+    </fieldset>
+
+    <!-- Event Selection -->
+    <fieldset>
+      <legend>Event Details</legend>
+      <label for="event">Select Event:</label>
+      <select id="event" name="event" required>
+        <option value="">--Choose an Event--</option>
+        <option value="hackathon">Hackathon</option>
+        <option value="workshop">AI Workshop</option>
+        <option value="seminar">Tech Seminar</option>
+        <option value="robotics">Robotics Challenge</option>
+      </select>
+
+      <div class="radio-group">
+        <legend>Ticket Type:</legend>
+        <label><input type="radio" name="ticket" value="standard" required> Standard</label>
+        <label><input type="radio" name="ticket" value="vip"> VIP</label>
+        <label><input type="radio" name="ticket" value="student"> Student</label>
+      </div>
+    </fieldset>
+
+    <!-- Terms -->
+    <fieldset>
+      <legend>Agreement</legend>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="terms" required> I agree to the terms and conditions</label>
+      </div>
+    </fieldset>
+
+    <!-- Submit -->
+    <button type="submit">Register</button>
+  </form>
+
+</body>
+</html>

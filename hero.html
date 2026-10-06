@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Hero Section</title>
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://jsdelivr.net" rel="stylesheet">
+  <style>
+    /* Custom styles to handle the background image overlay */
+    .hero-section {
+      /* Replace the URL below with your actual image path or URL */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://unsplash.com');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 80vh; /* Takes up 80% of the viewport height */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-width Hero Container -->
+  <div class="hero-section d-flex align-items-center text-center text-white w-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          
+          <!-- Centered Heading -->
+          <h1 class="display-3 fw-bold mb-3">Discover the Future of Innovation</h1>
+          
+          <!-- Centered Subheading -->
+          <p class="lead mb-4 fs-4 text-white-50">
+            Build beautiful, responsive websites faster than ever before with modern tools and clean layouts designed for your growth.
+          </p>
+          
+          <!-- Call-to-Action Button -->
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="#" class="btn btn-primary btn-lg px-4 gap-3 fw-semibold">Get Started Today</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://jsdelivr.net"></script>
+</body>
+</html>
