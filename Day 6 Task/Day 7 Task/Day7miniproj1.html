@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #weather {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    #loading {
+      color: blue;
+      font-weight: bold;
+    }
+    #error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Weather App</h2>
+  <input type="text" id="cityInput" placeholder="Enter city name">
+  <button id="searchBtn">Search</button>
+
+  <div id="loading" style="display:none;">Loading...</div>
+  <div id="error"></div>
+  <div id="weather"></div>
+
+  <script>
+    const apiKey = "faf437b47a118f00d471af37a0986094"; // Replace with your OpenWeatherMap API key
+
+    async function fetchWeather(city) {
+      const loadingMsg = document.getElementById("loading");
+      const errorMsg = document.getElementById("error");
+      const weatherDiv = document.getElementById("weather");
+
+      try {
+        // Show loading
+        loadingMsg.style.display = "block";
+        errorMsg.textContent = "";
+        weatherDiv.textContent = "";
+
+        // Fetch weather data
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+        );
+
+        if (!response.ok) {
+          throw new Error("City not found");
+        }
+
+        const data = await response.json();
+
+        // Hide loading
+        loadingMsg.style.display = "none";
+
+        // Display weather info
+        weatherDiv.innerHTML = `
+          <p><strong>City:</strong> ${data.name}</p>
+          <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
+          <p><strong>Condition:</strong> ${data.weather[0].description}</p>
+        `;
+      } catch (error) {
+        loadingMsg.style.display = "none";
+        errorMsg.textContent = "Something went wrong: " + error.message;
+        console.error("Error fetching weather:", error);
+      }
+    }
+
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      const city = document.getElementById("cityInput").value.trim();
+      if (city) {
+        fetchWeather(city);
+      }
+    });
+  </script>
+</body>
+</html>

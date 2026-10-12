@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+    }
+    #mainImage {
+      width: 400px;
+      height: 250px;
+      border: 2px solid #333;
+      margin-bottom: 10px;
+    }
+    #caption {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .thumbnails img {
+      width: 80px;
+      height: 50px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+    .thumbnails img.selected {
+      border: 2px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <h2>Image Gallery</h2>
+  <!-- Main Image -->
+  <img id="mainImage" src="https://via.placeholder.com/400x250?text=Image+1" alt="Main Image">
+  <p id="caption">Image 1</p>
+
+  <!-- Thumbnails -->
+  <div class="thumbnails">
+    <img src="https://via.placeholder.com/80x50?text=Img1" data-large="https://via.placeholder.com/400x250?text=Image+1" data-caption="Image 1" class="selected">
+    <img src="https://via.placeholder.com/80x50?text=Img2" data-large="https://via.placeholder.com/400x250?text=Image+2" data-caption="Image 2">
+    <img src="https://via.placeholder.com/80x50?text=Img3" data-large="https://via.placeholder.com/400x250?text=Image+3" data-caption="Image 3">
+    <img src="https://via.placeholder.com/80x50?text=Img4" data-large="https://via.placeholder.com/400x250?text=Image+4" data-caption="Image 4">
+    <img src="https://via.placeholder.com/80x50?text=Img5" data-large="https://via.placeholder.com/400x250?text=Image+5" data-caption="Image 5">
+  </div>
+
+  <script>
+    const mainImage = document.getElementById("mainImage");
+    const caption = document.getElementById("caption");
+    const thumbnails = document.querySelectorAll(".thumbnails img");
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener("click", () => {
+        // Update main image and caption
+        mainImage.src = thumb.dataset.large;
+        caption.textContent = thumb.dataset.caption;
+
+        // Remove 'selected' from all thumbnails
+        thumbnails.forEach(t => t.classList.remove("selected"));
+        // Highlight the clicked thumbnail
+        thumb.classList.add("selected");
+      });
+    });
+  </script>
+</body>
+</html>

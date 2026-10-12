@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chain Fetch Example</title>
+</head>
+<body>
+  <h2 id="output">Loading...</h2>
+
+  <script>
+    // Async function to fetch user and then their posts
+    async function getUserAndPosts(userId) {
+      const output = document.getElementById("output");
+
+      try {
+        // Step 1: Fetch user by ID
+        const userResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        if (!userResponse.ok) throw new Error("Failed to fetch user");
+        const user = await userResponse.json();
+
+        // Step 2: Fetch posts by that user
+        const postsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+        if (!postsResponse.ok) throw new Error("Failed to fetch posts");
+        const posts = await postsResponse.json();
+
+        // Display results
+        output.textContent = `Posts by ${user.name}:`;
+        posts.forEach(post => {
+          const div = document.createElement("div");
+          div.textContent = post.title;
+          div.style.margin = "6px 0";
+          div.style.padding = "4px";
+          div.style.border = "1px solid #ccc";
+          div.style.borderRadius = "4px";
+          output.appendChild(div);
+        });
+      } catch (error) {
+        output.textContent = "Something went wrong";
+        console.error("Error:", error);
+      }
+    }
+
+    // Call the function with a user ID (e.g., 1)
+    getUserAndPosts(1);
+  </script>
+</body>
+</html>

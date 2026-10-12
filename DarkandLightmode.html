@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme Toggle with JSON Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #222;
+      color: #f9f9f9;
+    }
+    .controls {
+      margin: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    #settingsDisplay {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background: #f1f1f1;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button id="toggleTheme">Toggle Theme</button>
+    <button id="increaseFont">Increase Font Size</button>
+    <button id="decreaseFont">Decrease Font Size</button>
+    <button id="resetSettings">Reset Settings</button>
+  </div>
+
+  <div id="settingsDisplay"></div>
+
+  <script>
+    // Default settings
+    const defaultSettings = {
+      theme: "light",
+      fontSize: 16
+    };
+
+    let settings = { ...defaultSettings };
+
+    const toggleBtn = document.getElementById("toggleTheme");
+    const increaseBtn = document.getElementById("increaseFont");
+    const decreaseBtn = document.getElementById("decreaseFont");
+    const resetBtn = document.getElementById("resetSettings");
+    const settingsDisplay = document.getElementById("settingsDisplay");
+
+    function applySettings() {
+      // Apply theme
+      if (settings.theme === "dark") {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+      // Apply font size
+      document.body.style.fontSize = settings.fontSize + "px";
+
+      // Show JSON string live
+      settingsDisplay.textContent = JSON.stringify(settings, null, 2);
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      settings.theme = settings.theme === "light" ? "dark" : "light";
+      applySettings();
+    });
+
+    increaseBtn.addEventListener("click", () => {
+      settings.fontSize += 2;
+      applySettings();
+    });
+
+    decreaseBtn.addEventListener("click", () => {
+      settings.fontSize = Math.max(10, settings.fontSize - 2);
+      applySettings();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      // Reset to default by parsing JSON string
+      settings = JSON.parse(JSON.stringify(defaultSettings));
+      applySettings();
+    });
+
+    // Initialize
+    applySettings();
+  </script>
+</body>
+</html>

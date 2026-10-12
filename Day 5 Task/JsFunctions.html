@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Functions</title>
+</head>
+<body>
+  <h1>Employee Data Processor</h1>
+
+  <script>
+   // Array of employee objects
+const employees = [
+  { name: "Kalaimathi", department: "IT", salary: 50000 },
+  { name: "Arun", department: "HR", salary: 35000 },
+  { name: "Priya", department: "Finance", salary: 45000 },
+  { name: "Vikram", department: "IT", salary: 60000 },
+  { name: "Meena", department: "Finance", salary: 30000 }
+];
+
+// 1. Filter employees in a specific department
+function listByDepartment(dept) {
+  return employees.filter(emp => emp.department === dept);
+}
+
+// 2. Map to generate names with 10% bonus-adjusted salary
+function bonusSalaries() {
+  return employees.map(emp => ({
+    name: emp.name,
+    bonusSalary: emp.salary * 1.10
+  }));
+}
+
+// 3. Reduce to calculate total company salary expense
+function totalSalaryExpense() {
+  return employees.reduce((acc, emp) => acc + emp.salary, 0);
+}
+
+// Example usage
+console.log("👩‍💻 IT Department:", listByDepartment("IT"));
+console.log("💰 Bonus Salaries:", bonusSalaries());
+console.log("📊 Total Salary Expense:", totalSalaryExpense());
+
+
+  </script>
+</body>
+</html>

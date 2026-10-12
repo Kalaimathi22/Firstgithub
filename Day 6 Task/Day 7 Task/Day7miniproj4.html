@@ -1,0 +1,67 @@
+.<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Country Search App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .card {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      max-width: 400px;
+    }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <h1>Search Country Info</h1>
+  <input type="text" id="countryInput" placeholder="Enter country name">
+  <button onclick="getCountry()">Search</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function getCountry() {
+      const name = document.getElementById("countryInput").value.trim();
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "Loading...";
+
+      try {
+        const res = await fetch(
+          `https://api.restcountries.com/countries/v5?q=${name}`,
+          {
+            headers: {
+              "Authorization": "Bearer rc_live_d5a5cae10fed417c9972682a430eed98" // replace with your own key later
+            }
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Country not found");
+        }
+
+        const payload = await res.json();
+        if (!payload.data || !payload.data.objects || payload.data.objects.length === 0) {
+          throw new Error("No country data found");
+        }
+
+        const country = payload.data.objects[0];
+
+        resultDiv.innerHTML = `
+          <div class="card">
+            <h2>${country.names.common}</h2>
+            <p><strong>Capital:</strong> ${country.capitals?.[0]?.name || "N/A"}</p>
+            <p><strong>Population:</strong> ${country.population?.toLocaleString() || "N/A"}</p>
+            <p><strong>Region:</strong> ${country.region || "N/A"}</p>
+            <img src="${country.flag?.url_png}" alt="Flag of ${country.names.common}">
+          </div>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>

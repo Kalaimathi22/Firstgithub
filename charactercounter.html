@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Textarea with Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    textarea {
+      width: 400px;
+      height: 120px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #counter {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    #warning {
+      color: red;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Live Character & Word Counter</h2>
+  <textarea id="textInput" placeholder="Type here..."></textarea>
+  <div id="counter">Characters: 0 | Words: 0</div>
+  <div id="warning"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const textInput = document.getElementById("textInput");
+    const counter = document.getElementById("counter");
+    const warning = document.getElementById("warning");
+    const submitBtn = document.getElementById("submitBtn");
+
+    const maxChars = 200;
+
+    textInput.addEventListener("input", () => {
+      const text = textInput.value;
+      const charCount = text.length;
+      const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
+
+      // Update counter
+      counter.textContent = `Characters: ${charCount} | Words: ${wordCount}`;
+
+      // Reset styles
+      counter.style.color = "black";
+      warning.textContent = "";
+      submitBtn.disabled = false;
+
+      // Near limit warning (>=180 chars)
+      if (charCount >= 180 && charCount <= maxChars) {
+        counter.style.color = "red";
+        warning.textContent = "⚠️ You are close to the limit!";
+      }
+
+      // Over limit
+      if (charCount > maxChars) {
+        counter.style.color = "red";
+        warning.textContent = "❌ Character limit exceeded!";
+        submitBtn.disabled = true;
+        // Prevent further typing
+        textInput.value = text.substring(0, maxChars);
+      }
+    });
+  </script>
+</body>
+</html>

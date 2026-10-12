@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Profile Lookup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 40px;
+    }
+    #profileCard {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #profileCard img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+    }
+    #error {
+      color: red;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>GitHub Profile Lookup</h2>
+  <input type="text" id="usernameInput" placeholder="Enter GitHub username">
+  <button id="searchBtn">Search</button>
+
+  <div id="error"></div>
+  <div id="profileCard"></div>
+
+  <script>
+    async function fetchGitHubProfile(username) {
+      const errorDiv = document.getElementById("error");
+      const profileCard = document.getElementById("profileCard");
+
+      try {
+        errorDiv.textContent = "";
+        profileCard.innerHTML = "Loading...";
+
+        const response = await fetch(`https://api.github.com/users/${username}`);
+
+        if (!response.ok) {
+          throw new Error("User not found");
+        }
+
+        const data = await response.json();
+
+        profileCard.innerHTML = `
+          <img src="${data.avatar_url}" alt="Avatar">
+          <h3>${data.name || "No name provided"}</h3>
+          <p>${data.bio || "No bio available"}</p>
+          <p><strong>Followers:</strong> ${data.followers}</p>
+          <p><strong>Public Repos:</strong> ${data.public_repos}</p>
+        `;
+      } catch (error) {
+        profileCard.innerHTML = "";
+        errorDiv.textContent = "User not found. Please try again.";
+        console.error("Error fetching profile:", error);
+      }
+    }
+
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      const username = document.getElementById("usernameInput").value.trim();
+      if (username) {
+        fetchGitHubProfile(username);
+      }
+    });
+  </script>
+</body>
+</html>

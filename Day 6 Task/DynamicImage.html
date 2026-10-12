@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Dynamic Image Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    .main-image {
+      width: 400px;
+      height: 250px;
+      object-fit: cover;
+      border: 2px solid #333;
+      margin-bottom: 10px;
+    }
+    .caption {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .thumbnails img {
+      width: 80px;
+      height: 50px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .thumbnails img:hover {
+      transform: scale(1.1);
+    }
+    .thumbnails img.active {
+      border-color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Image -->
+  <img id="mainImage" src="https://via.placeholder.com/400x250?text=Image+1" class="main-image" alt="Main">
+  <div id="caption" class="caption">Image 1</div>
+
+  <!-- Thumbnails -->
+  <div class="thumbnails">
+    <img src="tig.jpg" alt="Image 1" data-caption="Image 1" class="active">
+    <img src="ele.jpg" alt="Image 2" data-caption="Image 2">
+    <img src="rab.jpg" alt="Image 3" data-caption="Image 3">
+    <img src="tom.jpg" alt="Image 4" data-caption="Image 4">
+    <img src="squ.jpg" alt="Image 5" data-caption="Image 5">
+  </div>
+
+  <script>
+    const mainImage = document.getElementById('mainImage');
+    const caption = document.getElementById('caption');
+    const thumbnails = document.querySelectorAll('.thumbnails img');
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        // Update main image and caption
+        mainImage.src = thumb.src;
+        caption.textContent = thumb.dataset.caption;
+
+        // Highlight selected thumbnail
+        thumbnails.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

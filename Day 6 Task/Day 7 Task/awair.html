@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    async function getPost() {
+  const titleElement = document.getElementById("postTitle");
+  const retryButton = document.getElementById("retryBtn");
+
+  try {
+    titleElement.textContent = "Loading...";
+    retryButton.style.display = "none";
+
+    // Timeout helper (rejects after 5 seconds)
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Request timed out")), 5000)
+    );
+
+    // Race between fetch and timeout
+    const response = await Promise.race([
+      fetch("https://jsonplaceholder.typicode.com/posts/1"),
+      timeout
+    ]);
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const post = await response.json();
+    titleElement.textContent = post.title;
+  } catch (error) {
+    titleElement.textContent = "Something went wrong";
+    retryButton.style.display = "inline-block";
+    console.error("Error fetching post:", error);
+  }
+}
+
+</script>
+</body>
+</html>
